@@ -25,7 +25,10 @@ pipeline {
         
         stage('Start Application') {
             steps {
-                sh 'python3 main.py'
+                sh '''
+                source $VENV/bin/activate
+                python3 main.py
+                '''
             }
         }
     }

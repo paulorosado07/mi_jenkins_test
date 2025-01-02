@@ -22,13 +22,13 @@ pipeline {
             }
         }
 
-        stages {
-            stage('Run Python') {
-                steps {
-                    sh 'bash -c "source venv/bin/activate && python script.py"'
-                }
+        
+        stage('Run Python') {
+            steps {
+                sh 'bash -c "source venv/bin/activate && python script.py"'
             }
         }
+    
     }
 
 

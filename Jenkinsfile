@@ -15,9 +15,9 @@ pipeline {
         
         stage('Setup Environment') {
             steps {
-                sh '''
-                ls
+                sh '''                
                 python3 -m venv venv
+                ls
                 source venv/bin/activate                
                 pip install -r requirements.txt
                 '''

@@ -18,18 +18,15 @@ pipeline {
                 sh '''                
                 python3 -m venv venv
                 ls
-                source venv/bin/activate                
-                pip install -r requirements.txt
                 '''
             }
         }
-        
-        stage('Start Application') {
-            steps {
-                sh '''
-                source venv/bin/activate
-                python3 main.py
-                '''
+
+        stages {
+            stage('Run Python') {
+                steps {
+                    sh 'bash -c "source venv/bin/activate && python script.py"'
+                }
             }
         }
     }

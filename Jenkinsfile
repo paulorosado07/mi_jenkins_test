@@ -23,17 +23,9 @@ pipeline {
             }
         }
 
-        stage('Run Virtual Enviroment & Pip') {
+        stage('Run Virtual Enviroment & Pip & App Flask') {
             steps {
-                sh 'bash -c "source venv/bin/activate && pip install blinker click Flask Flask-Cors itsdangerous Jinja2 MarkupSafe Werkzeug"'
-            }
-        }
-        
-        stage('Start Application') {
-            steps {
-                sh '''
-                python3 main.py
-                '''
+                sh 'bash -c "source venv/bin/activate && pip install blinker click Flask Flask-Cors itsdangerous Jinja2 MarkupSafe Werkzeug && python3 main.py"'
             }
         }
     }

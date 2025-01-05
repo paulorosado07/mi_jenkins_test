@@ -25,7 +25,7 @@ pipeline {
 
         stage('Run Virtual Enviroment & Pip') {
             steps {
-                sh 'bash -c "source venv/bin/activate && pip install -r requirements.txt"'
+                sh 'bash -c "source venv/bin/activate && pip install blinker click Flask Flask-Cors itsdangerous Jinja2 MarkupSafe Werkzeug"'
             }
         }
         

@@ -18,7 +18,7 @@ pipeline {
                 sh '''                
                 python3 -m venv venv
                 ls
-                
+                pwd
                 '''
             }
         }

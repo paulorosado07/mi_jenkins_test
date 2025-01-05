@@ -1,48 +1,18 @@
 pipeline {
     agent any
-
     environment {
-        VENV = 'venv'
         FLASK_APP = 'main.py'
     }
-
     stages {
-        stage('version') {
+        stage('Install Dependencies') {
             steps {
-                sh 'python3 --version'
+                sh 'pip3 install -r requirements.txt'
             }
         }
-        
-        stage('Setup Environment') {
+        stage('Run Flask App') {
             steps {
-                sh '''                
-                python3 -m venv venv
-                ls
-                pwd
-                '''
+                sh 'nohup flask run --host=0.0.0.0 --port=5000 &'
             }
-        }
-
-        stage('Run Virtual Enviroment & Pip') {
-            steps {
-                sh 'bash -c "source venv/bin/activate && pip install -r requirements.txt"'
-            }
-        }
-        
-        stage('Start Application') {
-            steps {
-                sh 'bash -c "source venv/bin/activate && python3 main.py"'
-            }
-        }
-    }
-
-
-    post {
-        success {
-            echo 'Flask app is running successfully!'
-        }
-        failure {
-            echo 'Pipeline failed!'
         }
     }
 }

@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         FLASK_APP = 'main.py'
+        PATH = "$PATH:/var/lib/jenkins/.local/bin"
     }
     stages {
         stage('Install Dependencies') {
